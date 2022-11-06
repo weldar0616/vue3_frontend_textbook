@@ -4,9 +4,9 @@ import type { Member } from "@/interfaces";
 
 export const useMembersStore = defineStore("members", () => {
   const memberList = ref(new Map<number, Member>());
-  const getById = (id: number): Member => {
-    return memberList.value.get(id) as Member;
-  };
+  const getById = computed(
+    (id: number): Member => memberList.value.get(id) as Member
+  );
 
   function initList() {
     memberList.value.set(33456, {
