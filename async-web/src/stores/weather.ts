@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
 export interface City {
   name: string;
@@ -60,8 +61,8 @@ export const useeWeatherStore = defineStore("weather", {
       };
       const queryParams = new URLSearchParams(params);
       const urlFull = `${weatherInfoUrl}?${queryParams}`;
-      const response = await fetch(urlFull);
-      const weatherInfoJSON = await response.json();
+      const response = await axios.get(urlFull);
+      const weatherInfoJSON = response.data;
       const weatherArray = weatherInfoJSON.weather;
       const weather = weatherArray[0];
       this.weatherDescription = weather.description;
