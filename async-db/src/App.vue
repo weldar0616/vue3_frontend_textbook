@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>IndexDBサンプル</h1>
+    <h1>IndexedDBサンプル</h1>
   </header>
   <main>
     <RouterView />
