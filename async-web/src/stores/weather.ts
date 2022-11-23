@@ -47,7 +47,8 @@ export const useeWeatherStore = defineStore("weather", {
     },
     async receiveWeatherInfo(id: string) {
       this.selectedCity = this.cityList.get(id) as City;
-      console.log({ selectedCity: this.selectedCity, cityList: this.cityList});
+
+      console.log(import.meta.env)
 
       const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
       const params: {
@@ -57,7 +58,7 @@ export const useeWeatherStore = defineStore("weather", {
       } = {
         lang: "ja",
         q: this.selectedCity.q,
-        appId: "1ebd247d45436538f963d0f732ddd88a",
+        appId: import.meta.env.VITE_OPEN_WEATHER_APP_ID as string,
       };
       const queryParams = new URLSearchParams(params);
       const urlFull = `${weatherInfoUrl}?${queryParams}`;
