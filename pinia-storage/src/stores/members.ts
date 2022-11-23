@@ -26,7 +26,7 @@ export const useMembersStore = defineStore("members", {
     prepareMemberList(): void {
       let memberList = new Map<number, Member>();
       const memberListJSONStr = sessionStorage.getItem("memberList");
-      if (memberListJSONStr !== undefined) {
+      if (memberListJSONStr !== undefined && memberListJSONStr !== null) {
         const memberListJSON = JSON.parse(memberListJSONStr);
         memberList = new Map<number, Member>(memberListJSON);
       }
